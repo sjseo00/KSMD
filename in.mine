@@ -1,0 +1,20 @@
+read_data	data.chain
+
+timestep	0.005
+
+neighbor	0.4 bin
+neigh_modify	every 1 delay 1
+
+bond_style      harmonic
+bond_coeff	1 30.0 1.5
+
+pair_coeff	1 1 1.0 1.0 2.5
+
+fix		1 all nve
+# fix		2 all langevin 1.0 1.0 10.0 904297
+temperature 1.44
+freq_log    1
+freq_traj   1
+log_info temp pe ke etotal evdwl ebond
+
+run		10000
